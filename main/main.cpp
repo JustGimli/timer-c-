@@ -14,14 +14,18 @@ int main()
     sf::Text text;
         //fronts
     sf::Font font;
-    
+    sf::RectangleShape rectangle(sf::Vector2f(100.f, 50.f));
+    //sf::RenderTexture texture;
+//    if(texture.create(100,50))
+  //      return EXIT_FAILURE;
+
     if(!font.loadFromFile("./font/OpenSans-Bold.ttf"))
     {
         //error
     }    
     text.setFont(font);
     sf::Clock clock;
-    sf::RenderWindow window(sf::VideoMode(800,600), "Timer",sf::Style::Close); //render window
+    sf::RenderWindow window(sf::VideoMode(400,300), "Timer",sf::Style::Close); //render window
     window.setFramerateLimit(60);
 
     while(window.isOpen())
@@ -44,12 +48,18 @@ int main()
 
        
         sf::Time elapsedTime = clock.getElapsedTime();
-        
+
+        //texture.clear(sf::Color::Red);
+        //texture.draw(rectangle);
+        //texture.display();
         text.setString(timeToStr(elapsedTime.asSeconds()));
         text.setCharacterSize(24);
         window.clear();
+        //sf::Sprite sprite (texture.getTexture());
+        //window.draw(sprite);
         window.draw(text);
         window.display();
+        
 
    
     }
